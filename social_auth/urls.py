@@ -17,13 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
-from django.shortcuts import redirect
-def account (request):
-    return redirect("home")
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('accounts/profile/',account),
     path('',login_required(TemplateView.as_view(template_name='home.html')), name="home"),
 ]
